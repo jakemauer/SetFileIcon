@@ -23,7 +23,7 @@
 #import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
 
-void printHelp();
+void printHelp(void);
 
 
 int main (int argc, const char * argv[]) {
@@ -46,7 +46,7 @@ int main (int argc, const char * argv[]) {
 	NSString* filePath = [[NSUserDefaults standardUserDefaults] stringForKey:@"file"];
 	if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
 		NSString* error = [NSString stringWithFormat:@"Error: the file could not be found: %@\n", filePath];
-		fprintf(stderr, [error UTF8String]);
+        fprintf(stderr, "%s", [error UTF8String]);
 		return 1;
 	}
 	
@@ -58,7 +58,7 @@ int main (int argc, const char * argv[]) {
 		NSString* imagePath = [[NSUserDefaults standardUserDefaults] stringForKey:@"image"];
 		if (![[NSFileManager defaultManager] fileExistsAtPath:imagePath]) {
 			NSString* error = [NSString stringWithFormat:@"Error: the image could not be found: %@\n", imagePath];
-			fprintf(stderr, [error UTF8String]);
+            fprintf(stderr, "%s", [error UTF8String]);
 			return 1;
 		}
 		
